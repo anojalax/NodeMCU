@@ -3,9 +3,9 @@
 #include <MQTTClient.h>
 
 int BUTTON_PIN = D2; //button is connected to GPIO pin D1
-const char* ssid = "ATT2.4";
-const char* password = "Srirama7*";
-const char* mqtt_server = "ec2-54-205-193-143.compute-1.amazonaws.com";
+const char* ssid = "";
+const char* password = "";
+const char* mqtt_server = "ec2-45-205-193-143.compute-1.amazonaws.com";
 
 WiFiClient net;
 MQTTClient client;
@@ -14,7 +14,7 @@ unsigned long lastMillis = 0;
 void setup() {
   Serial.begin(115200);
   WiFi.begin(ssid, password);
-  client.begin("ec2-54-205-193-143.compute-1.amazonaws.com", net);
+  client.begin(mqtt_server, net);
   connect();
   client.publish("/switch", "initialised");
 }
